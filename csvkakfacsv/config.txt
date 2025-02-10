@@ -17,7 +17,7 @@ To Check the topic
 
 Testing:
 This is to send items to the service expose and insert them into kafka
-curl http://localhost:9090/orders -H "Content-type:application/json" -d "{\"orderId\": 1, \"productName\": \"Sport shoe\", \"price\": 27.5, \"isValid\": true}"
+curl http://localhost:9090/orders -H "Content-type:application/json" -d "{\"id\": 1, \"name\": \"Pablo\", \"salary\": 27}"
 
 This is to run the consumer
 bal run consumer.bal
