@@ -1,0 +1,23 @@
+To config Kafka
+
+To create the container
+docker run -d -p 9092:9092 --name broker apache/kafka:latest
+
+To access to the container
+docker exec --workdir /opt/kafka/bin/ -it broker sh
+
+To Create the topic
+./kafka-topics.sh --bootstrap-server localhost:9092 --create --topic test-topic
+
+To test kafka topic
+./kafka-console-producer.sh --bootstrap-server localhost:9092 --topic test-topic
+
+To Check the topic
+./kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic test-topic --from-beginning
+
+Testing:
+This is to send items to the service expose and insert them into kafka
+curl http://localhost:9090/orders -H "Content-type:application/json" -d "{\"orderId\": 1, \"productName\": \"Sport shoe\", \"price\": 27.5, \"isValid\": true}"
+
+This is to run the consumer
+bal run consumer.bal
